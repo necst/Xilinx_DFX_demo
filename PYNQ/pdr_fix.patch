@@ -1,0 +1,13 @@
+diff --git a/pynq/pl_server/hwh_parser.py b/pynq/pl_server/hwh_parser.py
+index 2ce5f273..f4beeeb8 100644
+--- a/pynq/pl_server/hwh_parser.py
++++ b/pynq/pl_server/hwh_parser.py
+@@ -271,6 +271,8 @@ class _HWHABC(metaclass=abc.ABCMeta):
+                 full_name, vlnv, pars, regs, bdtype = self.instance2attr[
+                     i.get('INSTANCE')]
+                 intf_id = i.get(mem_intf_id)
++                if vlnv is None:
++                    vlnv = 'xilinx.com:module_ref:dfx_wrapper:1.0' #FIXME: Temporary fix
+                 if full_name in self.ip_dict and \
+                         self.ip_dict[full_name]['mem_id'] and intf_id:
+                     rename = full_name + '/' + \
